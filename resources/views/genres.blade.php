@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 </head>
 <body>
+  <a href="tracks"> Tracks</a>
   <table class="table">
     <tr>
       <th>Genre ID</th>
