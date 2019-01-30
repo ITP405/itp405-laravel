@@ -4,6 +4,6 @@
 //     return view('genres');
 // });
 
-Route::get('/genres', 'GenresController@index');
+Route::get('/', 'GenresController@index');
 Route::get('/tracks', 'TracksController@index');
 //index = function name
