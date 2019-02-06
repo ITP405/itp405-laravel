@@ -1,12 +1,9 @@
+@extends('layout')
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Week2</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  </head>
-  <body>
+@section('title', 'Tracks')
+
+@section('main')
+    <a href="/tracks/new">Add track</a>
     <table class="table">
       <tr>
         <th>Track Name</th>
@@ -31,5 +28,4 @@
         </tr>
         @endforeach
     </table>
-  </body>
-</html>
+@endsection

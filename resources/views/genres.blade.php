@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <title>Assignment 2</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-</head>
-<body>
-  <a href="tracks"> Tracks</a>
+@extends('layout')
+
+@section('title', 'Genres')
+
+@section('main')
   <table class="table">
     <tr>
       <th>Genre ID</th>
@@ -20,8 +16,10 @@
         <td>
           <a href="tracks?genre={{$genre->Name}}"> {{$genre->Name}}</a>
         </td>
+        <td>
+          <a href="genres/{{$genre->GenreId}}/edit"> Edit </a>
+        </td>
       </tr>
     @endforeach
   </table>
-</body>
-</html>
+@endsection

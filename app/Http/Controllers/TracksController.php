@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Validator;
 class TracksController extends Controller
 {
     public function index(Request $request){
@@ -28,4 +29,49 @@ class TracksController extends Controller
         'tracks' => $tracks
       ]);
     }
+    public function create()
+    {
+      $albums = DB::table('albums')->get();
+      $mediaType = DB::table('media_types')->get();
+      $genres = DB::table('genres')->get();
+      return view('track.create',[
+        'albums' => $albums,
+        'mediaType' => $mediaType,
+        'genres' => $genres
+      ]);
+    }
+    public function store(Request $request)
+      {
+          $input = $request->all();
+          $validation = Validator::make($input, [
+            'name' => 'required',
+            'album' => 'required',
+            'media' => 'required',
+            'genre' => 'required',
+            'composer' => 'required',
+            'millisecond' => 'required',
+            'byte' => 'required',
+            'unitPrice' => 'required'
+          ]);
+
+          if($validation->fails())
+          {
+            return redirect('/tracks/new')
+              ->withInput()
+              ->withErrors($validation);
+           }
+          //otherwise insert the playlist into the db
+          DB::table('tracks')->insert([
+            'Name' => $request->name,
+            'AlbumId' => $request->album,
+            'MediaTypeId' => $request->media,
+            'GenreId' => $request->genre,
+            'Composer' => $request->composer,
+            'Milliseconds' => $request->millisecond,
+            'Bytes' => $request->byte,
+            'UnitPrice'=>$request->unitPrice
+
+          ]);
+          return redirect('/tracks');
+      }
 }
